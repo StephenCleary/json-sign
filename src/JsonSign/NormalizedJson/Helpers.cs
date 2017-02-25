@@ -32,11 +32,11 @@ namespace Nito.NormalizedJson
                 integer = integer.Substring(0, integer.Length - 1);
                 ++exponent;
             }
-            if (integer == "0")
-                return "0";
             var sb = new StringBuilder();
             sb.Append(sign);
             sb.Append(integer);
+            if (integer == "0")
+                return sb.ToString();
             if (fraction != "")
             {
                 sb.Append('.');

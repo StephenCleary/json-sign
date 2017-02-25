@@ -8,6 +8,7 @@ namespace NormalizedJson.UnitTests
     {
         [Theory]
         [InlineData("0", "0")]
+        [InlineData("-0", "-0")]
         [InlineData("1", "1")]
         [InlineData("-5", "-5")]
         [InlineData("10", "1e1")]
@@ -16,7 +17,8 @@ namespace NormalizedJson.UnitTests
         [InlineData("100", "1e2")]
         [InlineData("101", "1.01e2")]
         [InlineData("1001", "1.001e3")]
-        [InlineData("-0.00e013", "0")]
+        [InlineData("0.00e013", "0")]
+        [InlineData("-0.00e013", "-0")]
         [InlineData("-100.0100E+013", "-1.0001e15")]
         [InlineData("28446744073709551615", "2.8446744073709551615e19")] // 18446744073709551615 == UInt64.MaxValue
         [InlineData("28446744073709551615e-28446744073709551615", "2.8446744073709551615e-28446744073709551596")]

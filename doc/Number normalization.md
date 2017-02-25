@@ -25,9 +25,9 @@ Using these components, the number normalization algorithm is:
    1. Remove last character from `I`.
    2. If that character is `"0"` and `F` is equal to `""`, discard that character. Otherwise, prepend that character to `F`.
    3. Increment `E`.
-4. If (`I` is equal to `"0"`) then output `I` and stop.
-5. Output `S`.
-6. Output `I`.
+4. Output `S`.
+5. Output `I`.
+6. If (`I` is equal to `"0"`) then stop.
 7. If (`F` is not equal to `""`) then:
    1. Output the character `"."`.
    2. Output `F`.
