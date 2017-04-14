@@ -1,11 +1,30 @@
+## Normalized numbers
+
+Normalized JSON numbers follow this pattern:
+
+````regex
+-?[0-9](\.[0-9]*[1-9])?(e-?[1-9][0-9]*)?
+````
+
+That is:
+
+- No positive signs (`+`) are used at all. The absense of a `-` sign indicates a positive value, both for the significand and the exponent.
+- No leading zeroes are permitted in the integer portion, nor in the exponent.
+- No trailing zeroes are permitted in the fractional portion.
+- A decimal point `.` and fractional portion is only used if the fractional portion is non-zero.
+- The exponent indicator is always a lowercase `e`.
+- The exponent indicator is only used if the exponent portion is non-zero.
+
+## Algorithm
+
 In the [JSON standard](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf), numbers are decimal floating-point values with arbitrary precision. In order to allow for all possible JSON numbers, the number normalization algorithm is treated as a string manipulation algorithm as much as possible. The exponent portion does require numeric manipulation, but it may be treated as an arbitrary-precision decimal integer rather than an arbitrary-precision decimal floating-point.
 
 First, parse the number (as a string) according to this regular expression, which includes all valid JSON numbers:
 
-```
+````regex
 (-)?(0|([1-9][0-9]*))(\.([0-9]+))?([Ee]([-+]?[0-9]+))?
 S   I                   F              E
-```
+````
 
 There are four components of note:
 

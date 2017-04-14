@@ -15,6 +15,7 @@ namespace NormalizedJson.UnitTests
         [InlineData("11", "1.1e1")]
         [InlineData("13e0", "1.3e1")]
         [InlineData("100", "1e2")]
+        [InlineData("11e-1", "1.1")]
         [InlineData("101", "1.01e2")]
         [InlineData("1001", "1.001e3")]
         [InlineData("0.00e013", "0")]
